@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "185643184467",
+    "project_id": "practice-8f493",
+    "storage_bucket": "practice-8f493.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185643184467:android:cab88e0fce64ef50efb1a6",
+        "android_client_info": {
+          "package_name": "com.IHI.video_one"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9AS_wfDANbM1ex9oK5bPaehDcqqUTU8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185643184467:android:4d76e5dc34540dd3efb1a6",
+        "android_client_info": {
+          "package_name": "com.example.firebase_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9AS_wfDANbM1ex9oK5bPaehDcqqUTU8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185643184467:android:a30bede3cb7d4c61efb1a6",
+        "android_client_info": {
+          "package_name": "com.example.untitled"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9AS_wfDANbM1ex9oK5bPaehDcqqUTU8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
