@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:untitled/ui/authentication/signup_screen.dart';
+import 'package:untitled/ui/forgot_password/forgot_pass_screen.dart';
 import '../../firebase_services/splash_services.dart';
 import '../../home.dart';
 import '../../widget/round_button.dart';
@@ -96,6 +97,17 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ],
                           )
+                      ),
+                      const SizedBox(height: 10,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.pushNamed(context, ForgotPassScreen.routeName);
+                            },child: const Text("Forgot Password?",style: TextStyle(color: Colors.blue),),
+                          )
+                        ],
                       ),
                       const SizedBox(height: 20,),
                       RoundButton( onTap: (){
