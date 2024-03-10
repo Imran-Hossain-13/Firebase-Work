@@ -9,8 +9,6 @@ import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firestore/firestore.dart';
 import 'firestore/firestore_services.dart';
-import 'realtime_firebase/add_post.dart';
-import 'realtime_firebase/post_screen.dart';
 // import 'home.dart';
 
 void main() async{

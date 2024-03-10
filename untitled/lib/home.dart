@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:untitled/firestore/firestore.dart';
 import 'package:untitled/image_video/image_shower.dart';
 import 'package:untitled/ui/image/upload_imagge.dart';
-
-import 'image_video/imagepicker.dart';
 import 'realtime_firebase/post_screen.dart';
 
 class HomeScreen extends StatefulWidget {
