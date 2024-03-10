@@ -3,8 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/firestore/firestore.dart';
+import 'package:untitled/image_video/image_shower.dart';
 import 'package:untitled/ui/image/upload_imagge.dart';
 
+import 'image_video/imagepicker.dart';
 import 'realtime_firebase/post_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,11 +22,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    // final val = _auth.currentUser;
+    // final fireStore = FirebaseFirestore.instance.collection(val!.email.toString());
     return Scaffold(
       body: Center(
         child: Container(
-          height: size.height/2.5,
-          width: size.width/1.5,
+          height: size.height/2,
+          width: size.width/1.2,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -61,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   final auth = FirebaseAuth.instance;
                   final val = auth.currentUser;
                   if(val!.email.toString().contains("@gmail.com")){
-                    final DatabaseReference fireStore = FirebaseDatabase.instance.ref(val.email.toString());
+                    final DatabaseReference fireStore = FirebaseDatabase.instance.ref(val.email!.replaceAll("@gmail.com", ''));
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>PostScreen(fireStore,)));
                   }else{
                     final DatabaseReference fireStore = FirebaseDatabase.instance.ref(val.phoneNumber.toString());
@@ -69,13 +73,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                 },
                 child: Container(
-                  width: size.width/2,
+                  width: size.width/1.45,
                   padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 20),
                   decoration: BoxDecoration(
                     color: Colors.blueAccent.withOpacity(.7),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Center(child: Text("Go to Firebase",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                  child: const Center(child: Text("Realtime Database",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
                 ),
               ),
               const SizedBox(height: 15,),
@@ -93,13 +97,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   // Navigator.pushNamed(context, FireStoreScreen.routeName,arguments: [fireStore]);
                 },
                 child: Container(
-                  width: size.width/2,
+                  width: size.width/1.45,
                   padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 20),
                   decoration: BoxDecoration(
                     color: Colors.blueAccent.withOpacity(.7),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Center(child: Text("Go to Firestore",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                  child: const Center(child: Text("Fierstore Database",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
                 ),
               ),
               const SizedBox(height: 15,),
@@ -117,13 +121,43 @@ class _HomeScreenState extends State<HomeScreen> {
                   // Navigator.pushNamed(context, UploadImageScreen.routeName);
                 },
                 child: Container(
-                  width: size.width/2,
+                  width: size.width/1.45,
                   padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 20),
                   decoration: BoxDecoration(
                     color: Colors.blueAccent.withOpacity(.7),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Center(child: Text("Profile picture",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                ),
+              ),
+              const SizedBox(height: 15,),
+              InkWell(
+                onTap: (){
+                  final auth = FirebaseAuth.instance;
+                  final val = auth.currentUser;
+                  if(val!.email.toString().contains("@gmail.com")){
+                    final fireStore = FirebaseFirestore.instance.collection("${val.email}Images");
+                    fireStore.doc('1').set({
+                      'text':'Signed in',
+                    });
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ImageShower(ref: fireStore,)));
+                  }else{
+                    final fireStore = FirebaseFirestore.instance.collection("${val.email}Images");
+                    fireStore.doc('1').set({
+                      'text':'Signed in',
+                    });
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ImageShower(ref: fireStore)));
+                  }
+                  // Navigator.pushNamed(context, UploadImageScreen.routeName);
+                },
+                child: Container(
+                  width: size.width/1.45,
+                  padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.blueAccent.withOpacity(.7),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const Center(child: Text("Image and video",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
                 ),
               ),
             ],

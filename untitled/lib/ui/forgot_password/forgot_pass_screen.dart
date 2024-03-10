@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import '../../widget/round_button.dart';
 
 class ForgotPassScreen extends StatefulWidget {
@@ -13,7 +12,7 @@ class ForgotPassScreen extends StatefulWidget {
 }
 
 class _ForgotPassScreenState extends State<ForgotPassScreen> {
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController =  TextEditingController();
   bool loading = false;
@@ -52,7 +51,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                       ),
                       validator: (value){
                         if(value!.isEmpty){
-                          return "Enter email";
+                          return "Enter email..";
                         }else{
                           return null;
                         }
@@ -73,7 +72,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                   setState(() {
                     loading = false;
                   });
-                  // Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                  // Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false);
                 }
                 ).onError((error, stackTrace) {
                   setState(() {
@@ -88,7 +87,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                   );
                 });
               }
-            },title: "Login"),
+            },title: "Send Email"),
           ],
         ),
       ),

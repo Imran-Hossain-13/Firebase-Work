@@ -13,12 +13,11 @@ class SplashServices{
     final user = _auth.currentUser;
     if(user != null){
       Timer(const Duration(seconds: 3), (){
-        final val = _auth.currentUser;
-        if(val!.email.toString().contains("@gmail.com")){
-          final CollectionReference fireStore = FirebaseFirestore.instance.collection(val.email.toString());
+        if(user!.email.toString().contains("@gmail.com")){
+          final CollectionReference fireStore = FirebaseFirestore.instance.collection(user.email.toString());
           Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen(fireStore)));
         }else{
-          final fireStore = FirebaseFirestore.instance.collection(val.phoneNumber.toString());
+          final fireStore = FirebaseFirestore.instance.collection(user.phoneNumber.toString());
           Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen(fireStore)));
         }
       });

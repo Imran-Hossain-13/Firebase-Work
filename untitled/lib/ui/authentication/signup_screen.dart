@@ -104,9 +104,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           });
                           final val = _auth.currentUser;
                           final fireStore = FirebaseFirestore.instance.collection(val!.email.toString());
-                          String id = DateTime.now().millisecondsSinceEpoch.toString();
-                          fireStore.doc(id).set({
-                            'id':id,
+                          fireStore.doc().set({
+
                           });
                           SnackBar sc = const SnackBar(content:  Text("Sign up success"));
                           ScaffoldMessenger.of(context).showSnackBar(sc);

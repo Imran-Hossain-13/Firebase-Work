@@ -18,7 +18,6 @@ class PostScreen extends StatefulWidget {
 
 class _PostScreenState extends State<PostScreen> {
   final _auth = FirebaseAuth.instance;
-  // final ref = FirebaseDatabase.instance.ref('Post');
   final searchFilter = TextEditingController();
   final editController = TextEditingController();
 
@@ -147,7 +146,7 @@ class _PostScreenState extends State<PostScreen> {
         onPressed: (){
           final val = _auth.currentUser;
           if(val!.email.toString().contains("@gmail.com")){
-            final DatabaseReference fireStore = FirebaseDatabase.instance.ref(val.email.toString());
+            final DatabaseReference fireStore = FirebaseDatabase.instance.ref(val.email!.replaceAll("@gmail.com", ''));
             Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPostScreen(fireStore,)));
           }else{
             final DatabaseReference fireStore = FirebaseDatabase.instance.ref(val.phoneNumber.toString());

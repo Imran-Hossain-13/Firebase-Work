@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:untitled/widget/round_button.dart';
@@ -6,7 +7,7 @@ import 'package:firebase_database/firebase_database.dart';
 
 class AddPostScreen extends StatefulWidget {
   static String routeName = "AddPostScreen";
-  final ref;
+  final DatabaseReference ref;
   const AddPostScreen(this.ref,{super.key});
 
   @override
@@ -19,6 +20,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
   final postController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    // final val = _auth.currentUser;
+    // final fireStore = FirebaseDatabase.instance.ref(val!.email.toString());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -71,7 +74,12 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     loading = false;
                   });
                   Fluttertoast.showToast(
-                      msg: error.toString(), gravity: ToastGravity.BOTTOM);
+                    msg: error.toString(),
+                    backgroundColor: Colors.green,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    toastLength: Toast.LENGTH_SHORT,
+                  );
                 });
               },
               title: "Submit",
